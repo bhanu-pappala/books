@@ -1,0 +1,20 @@
+def string_compression(string):
+    compressed = []
+    counter = 0
+    for i in range(len(string)):
+        if i != 0 and string[i-1] != string[i]:
+            compressed.append(string[i-1] + str(counter))
+            counter = 0
+        counter += 1
+
+    if counter:
+        compressed.append(string[-1] + str(counter))
+
+    return min(string, "".join(compressed), key=len)
+
+print(string_compression("aabcccccaaa"))
+print(string_compression("abcdef"))
+print(string_compression("aabb"))
+print(string_compression("aaa"))
+print(string_compression("a"))
+print(string_compression(''))
